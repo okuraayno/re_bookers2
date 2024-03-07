@@ -21,6 +21,9 @@ class Book < ApplicationRecord
       Book.where('title LIKE ?', '%' + content + '%')
     end
   end
+  
+  scope :latest, -> { order(created_at: :desc) }
+  scope :star_count, -> {order(star: :desc)}
 
   validates :title, presence:true
   validates :body, presence:true, length:{maximum:200}

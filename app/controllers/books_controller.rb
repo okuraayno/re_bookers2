@@ -2,8 +2,14 @@ class BooksController < ApplicationController
 before_action :is_matching_login_user, only: [:edit]
 
   def index
-    @books = Book.all
     @book = Book.new
+    if params[:latest]
+      @books = Book.latest
+    elsif params[:star_count]
+      @books = Book.star_count
+    else
+    @books = Book.all
+    end
   end
 
   def create
@@ -44,7 +50,7 @@ before_action :is_matching_login_user, only: [:edit]
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :star)
+    params.require(:book).permit(:title, :body, :tag, :star)
   end
 
   def is_matching_login_user

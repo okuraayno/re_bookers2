@@ -12,5 +12,5 @@ class SearchesController < ApplicationController
       @records = Book.search_for(@content, @method)
     end
   end
-
+  
 end
