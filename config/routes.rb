@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  devise_scope :user do
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   root :to =>"homes#top"
@@ -16,7 +19,7 @@ Rails.application.routes.draw do
     resources :book_comments, only: [:create, :destroy]
   end
   
-  get "search" => "searches#search"
+  get "searches" => "searches#search"
   get "tags" => "tags#search"
   
 end
