@@ -23,4 +23,4 @@ Things you may want to cover:
 
 * ...
 
-作業しましたよ
+作業しました
